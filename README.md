@@ -4,7 +4,7 @@ A low-cost, four-joint pick-and-place arm built for Mechatronic Project 478 at S
 
 <p align="center">
 
-&#x20;    <img src="docs/arm.jpg" alt="WDD2 pick-and-place arm" width="500">
+&#x20;    <img src="docs/arm.png" alt="WDD2 pick-and-place arm" width="500">
 
 &#x20;  </p>
 
@@ -35,7 +35,7 @@ A low-cost, four-joint pick-and-place arm built for Mechatronic Project 478 at S
 
 1. Print the parts in `cad/stl/` (PLA-CF at 100 % infill for the arm, PETG at 60 % for the housing, TPU 95A for the jaw pads).
 2. Wire the electronics as in `electronics/`, and set the three buck converters to 8.0 V, 6.7 V and 6.5 V before connecting any servo.
-3. Flash `firmware/WDD2\_firmware/WDD2\_firmware.ino` to the ESP32-S3 (see `firmware/README.md`).
+3. Flash `firmware/WDD2\\\_firmware/WDD2\\\_firmware.ino` to the ESP32-S3 (see `firmware/README.md`).
 4. Install the Python packages and run the GUI (see `software/`).
 
 ## Hardware
