@@ -1,0 +1,13 @@
+quantity,value,unit
+"pad centre height, empty",65,mm
+"pad centre height, 500 g",50,mm
+tip sag,15,mm
+shoulder encoder empty / 500 g,0.13 / -0.62,deg
+elbow encoder empty / 500 g,-0.25 / -0.88,deg
+wrist encoder empty / 500 g,-0.09 / -0.18,deg
+base encoder,0.97 / 0.97,deg
+shoulder trim empty / 500 g,+2.33 / +5.00 (clamp),deg
+elbow trim empty / 500 g,+2.39 / +5.00 (clamp),deg
+wrist trim empty / 500 g,-0.23 / +1.72,deg
+grasp confirm median / holding median,0.142 / 0.109,A
+hold duration,5,min

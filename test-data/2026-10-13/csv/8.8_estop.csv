@@ -1,0 +1,12 @@
+press,servo_rails_V,logic_5V_on,gui_shows_estop,no_restart_until_reset,result
+1,0,Y,Y,Y,PASS
+2,0,Y,Y,Y,PASS
+3,0,Y,Y,Y,PASS
+4,0,Y,Y,Y,PASS
+5,0,Y,Y,Y,PASS
+6,0,Y,Y,Y,PASS
+7,0,Y,Y,Y,PASS
+8,0,Y,Y,Y,PASS
+9,0,Y,Y,Y,PASS
+10,0,Y,Y,Y,PASS
+GPIO 41 wire disconnected,0,Y,N (expected),N (arm jerked to last pose on release),PASS (power cut)

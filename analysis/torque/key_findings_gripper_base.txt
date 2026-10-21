@@ -1,0 +1,11 @@
+1. Gripper: lifting the 0.5 kg cube at 2 m/s^2 needs 2.95 N of friction per jaw, a design normal force of 7.38 N per jaw (mu = 0.8, SF 2) and 0.458 N.m at each crank.
+2. Gripper: with both jaws driven through the gear train (ratio 1.882), the MG996R must supply 0.486 N.m (4.96 kg.cm), 45% of its 1.08 N.m rating. This is 2 x the single-crank value (0.243 N.m) presented in Meeting 3.
+3. Gripper: the result depends strongly on friction. The servo holds the cube (with SF 2) only if mu >= 0.36. Plastic on plastic (PLA-CF jaw pads) is typically about 0.3-0.5, close to this limit, so the assumed mu = 0.8 needs rubber or TPU pads on the jaws, or should be confirmed by a grip test.
+4. Gripper: at mu = 0.8 the servo can hold up to 1.11 kg with SF 2, 2.2x the design payload.
+5. Gripper: the estimated holding current is about 0.6 A (stall 2.5 A), a usable threshold for detecting a gripped object with the INA219.
+6. Gripper supply: the MG996R is rated for 4.8-6.6 V, but rail 3 is set to 6.7 V. Lower rail 3 to 6.6 V or less.
+7. Base: the axis is vertical, so the DS3240-270-FB carries no gravity torque; it is sized by inertia. The moment of inertia peaks with the arm stretched out: 0.201 kg.m^2 with the payload (0.071 kg.m^2 without).
+8. Base: accelerating at 8 rad/s^2 needs 2.42 N.m with SF 1.5, 62% of the 3.9 N.m rating. The rating allows up to 12.9 rad/s^2 with the arm extended and loaded.
+9. Base: a 90 deg rotation takes 0.89 s at 8 rad/s^2 (0.70 s at the maximum acceleration), well within the 15 s cycle-time objective.
+10. Base bearings: the arm and payload put 15.5 N of axial load and an overturning moment of 4.60 N.m on the base bearings (arm extended). These loads act on the bearings and shaft, not on the servo.
+11. Assumptions: CAD masses (solid printed parts, conservative); jaw normal force acts at the crank length with the linkage at its design position; MG996R rated at 6.0 V; base friction and gear backlash covered by the safety factor.

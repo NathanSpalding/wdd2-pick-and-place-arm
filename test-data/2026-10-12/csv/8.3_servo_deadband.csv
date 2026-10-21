@@ -1,0 +1,5 @@
+joint,start_pulse_us,reversal_first_move_us,step_resolution_us,slope_deg_per_us,reversal_deadband_deg,step_resolution_deg,note
+base,1623,1618,4,0.128,0.638,0.51,Hunts ±0.7° for several s after each step (horn play); jumps every 3–5 µs
+shoulder,1558,1530,6,0.129,3.618,0.775,"Stick-slip: 0.5–0.8° jumps, up to 2 s delay"
+elbow,1582,1576,2,0.136,0.815,0.272,Start 1582 approached from below; step size from 1562→1564 up test
+wrist,1548,1539,3.5,0.136,1.225,0.476,1 count creep at 1541; jumps every 3–4 µs

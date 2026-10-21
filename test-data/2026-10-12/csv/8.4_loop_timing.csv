@@ -1,0 +1,10 @@
+quantity,value,unit,note
+Loops measured,22773,,
+Mean loop period,5000,µs,"12 Oct 2026, 114 s run incl. moves"
+Min loop period,4717,µs,
+Max loop period,5283,µs,
+I²C read mean (4 encoders + INA219),1472,µs,earlier: 1544–1565 µs
+I²C read max,1675,µs,earlier: 1631–4062 µs
+Loop exec max,1965,µs,earlier: 1852–4453 µs
+Overruns,0,,earlier: 0
+Mean rate,200,Hz,

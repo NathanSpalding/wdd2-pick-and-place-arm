@@ -1,0 +1,13 @@
+1. Reach: the as-built arm reaches 511 mm from the base axis (stretched out horizontally), 70% beyond the original 300 mm target.
+2. Worst case: every pitch joint is most loaded when the arm is stretched out horizontally (all joints at 0 deg), where the 500 g payload and the links have their longest lever arms. Each joint is equally loaded in any pose where everything beyond it is horizontal.
+3. Shoulder (DS5180-270-FB): 3.77 Nm static, 5.65 Nm with SF 1.5, against 9.80 Nm rated -> 58% utilised, margin 1.73x.
+4. Elbow (DS3240-270-FB): 1.96 Nm static, 2.94 Nm with SF 1.5, against 4.40 Nm rated -> 67% utilised, margin 1.50x.
+5. Wrist (DS3225): 0.77 Nm static, 1.15 Nm with SF 1.5, against 2.45 Nm rated -> 47% utilised, margin 2.13x.
+6. Limiting joint: the elbow is the most heavily loaded servo (67% of rated torque at the worst case, including SF 1.5).
+7. All three pitch servos hold the 500 g payload anywhere in the workspace with the 1.5 safety factor applied.
+8. Reach increase vs torque: going from the original 300 mm target to the new 511 mm maximum reach raises the worst-case torque by 59% at the shoulder and 28% at the elbow. The wrist load is unchanged: it depends only on the gripper's own angle, not on how far out the arm is.
+9. Compared with the earlier hand calculation for the 300 mm target (5.29 / 2.58 / 0.75 Nm incl. SF), this CAD-based model gives 3.56 / 2.29 / 1.15 Nm at 300 mm and 5.65 / 2.94 / 1.15 Nm at the new maximum reach (shoulder / elbow / wrist).
+10. Typical task: picking at 300 mm with the gripper pointing down needs only 2.23 / 1.08 / 0.01 Nm (shoulder / elbow / wrist, static), about 59% of the worst case at the shoulder.
+11. Payload capacity at maximum reach (SF 1.5): 0.86 kg, limited by the elbow - 1.7x the 500 g design payload.
+12. Base: no gravity torque (vertical axis); it is sized by inertia. Accelerating the extended, loaded arm (I = 0.201 kg.m^2) at 8 rad/s^2 needs 2.42 Nm with SF 1.5, 62% of the 3.9 Nm rating, so the base servo is within its rating. The base acceleration should stay below 13 rad/s^2 with the arm extended.
+13. Assumptions: static holding torques from CAD masses (solid-modelled printed parts, so conservative); servo ratings at the rail voltages; dynamics, friction and backlash covered by the safety factor; self-collision not checked.

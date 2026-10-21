@@ -1,0 +1,5 @@
+rail,nominal_V,rating_V,idle_V,holding_500g_extended_V,cycle_min_V,cycle_max_V,min_at,max_at
+#1 shoulder (DS5180),8.0,"6.0-8.4 (typical, confirm)",8.12,8.05,7.78,8.08,side transfer,lowering the cube
+#2 base + elbow (DS3240),6.7,"4.8-6.8 (typical, confirm)",6.67,6.63,6.65,6.66,,
+"#3 wrist + gripper (DS3225, MG996R)",6.5,"4.8-6.8 (typical, confirm)",6.54,6.5,6.51,6.53,side transfer,descents and pickup
+5 V logic,5.0,4.75-5.25,5.15,5.06,5.15,5.15,,

@@ -1,0 +1,86 @@
+BOM,,,,,,,
+Description ,QTY,UNIT PRICE,LINK,MATERIAL,INFILL,MASS PER PART (g),LINE TOTAL (R)
+Servo Motors,,,,,,,
+MG996R,1,129,https://www.takealot.com/cmu-mg996r-towerpro-11kg-metal-gear-rc-servo-motor-180-4-8-6-6v/PLID100881340,,,,129
+DS3225,1,295,https://www.amazon.com/dp/B0CNTG877G?ref=ppx_yo2ov_dt_b_fed_asin_title&th=1,,,,295
+DS3240,2,238,https://www.robotics.org.za/DS3240-270-FB,,,,476
+DS5180,1,398,https://www.robotics.org.za/DS5180-270-FB,,,,398
+Servo Horns,,,,,,,
+25T for DS32 series,3,,,,,,
+18T for DS51 series,1,,,,,,
+Electrical,,,,,,,
+ESP S3 - N16R8,1,178,https://www.robotics.org.za/ESP32-S3-N16R8,,,,178
+XL4016 Voltage Regulator,3,58,https://www.robotics.org.za/XL4016,,,,174
+INA219 Current Sensor,1,28,https://www.robotics.org.za/INA219-MOD,,,,28
+TCA9548A I2C mux,1,63,https://www.takealot.com/tca9548a-i2c-iic-multiplexer-breakout-board-8-channel-expansion/PLID101395334,,,,63
+XT60 Connector,1,23,https://www.robotics.org.za/XT60-KIT,,,,23
+3 Prong Plug,1,59,https://www.builders.co.za/Electrical-and-Electronics/Plugs-Sockets-and-Switches/Multi-Plugs/Electricmate-Solid-Rubber-3-Prong-Plug-Top-Black-10-A/p/000000000000754267,,,,59
+Cabtyre 1.5mm X3 Core,3m,35,https://www.builders.co.za/Electrical-and-Electronics/Wiring/Pre-Cut-Cables/waco-cabtyre-cable-black-3000-x-1-mm/p/000000850032252001,,,,35
+Blade 30 A Fuse holder,1,12,https://www.robotics.org.za/BLADE-30A-CAP,,,,12
+PBME16TR-M4AL Emergency Stop Switch 16mm 2c/o Latching Twist Reset,1,158,https://www.communica.co.za/products/pbme16tr-m4al?variant=30700683788361,,,,158
+12V 20A 300W DC Power Supply,1,211,https://www.takealot.com/12v-20a-300w-professional-dc-power-supply/PLID95767010,,,,211
+15A Blade Fuse,5,6.5,https://www.takealot.com/motoquip-blade-fuses-15-amp/PLID40661066,,,,32.5
+AS5600 Magnetic Encoder,4,41,https://www.amazon.com/dp/B0CM3C8KFT?ref=ppx_yo2ov_dt_b_fed_asin_title,,,,164
+5V 1A Buck Regulator,1,16,https://www.robotics.org.za/5V1A-BUCK-REG,,,,16
+5-Pin 12V DC 40A Vehicle Car Relay,1,299,https://www.takealot.com/5-pin-12v-dc-40a-vehicle-car-relay/PLID99141473,,,,299
+470 uF Capacitor,1,,Electrical Labs,,,,
+100nF Capacitor,2,,Electrical Labs,,,,
+10k ohm Resistor,1,,Electrical Labs,,,,
+1N4007 Diode 10 Pack,1,15,https://www.robotics.org.za/1N4007-10,,,,15
+Servo Wire Extension Kit,2,18,https://www.robotics.org.za/SERVO-KIT,,,,36
+KF120 Screw Terminal Block Kit - 2.54mm (50 Pieces),1,158,https://www.robotics.org.za/KF120-KIT-50,,,,158
+KF120 Screw Terminal Block 16 Pin - 2.54mm,2,14,https://www.robotics.org.za/KF120-16P-254,,,,28
+Screw Terminal Block 4 Pin - 5mm (10 Pack),1,23,https://www.robotics.org.za/KF301-4P,,,,23
+"14 AWG (2.5mm²) Silicone Wire - Red, 1 m",2,30,https://electromannsa.co.za/products/1meter-high-temperature-resistant-2-5mm-14awg-silicone-cable-red,,,,60
+"14 AWG (2.5mm²) Silicone Wire - Black, 1 m",2,30,https://electromannsa.co.za/products/1meter-high-temperature-resistant-2-5mm-14awg-silicone-cable-black,,,,60
+Protoboard 70 x 90mm (4 Pack),1,70,https://www.robotics.org.za/DS-7090-254,,,,70
+Fasteners + shafts,,,,,,,
+"350Pcs Threaded Inserts, M2-M6 Heat Set Inserts for 3D Printing",1,163,https://www.amazon.com/dp/B0FVKYJ83G?ref=ppx_yo2ov_dt_b_fed_asin_title&th=1,,,,163
+"860Pcs M2-M5 Metric Screws, 12.9 Alloy Steel Hex Bolts & Nuts Kit",1,163,https://www.amazon.com/dp/B0DBLCHK48?ref=ppx_yo2ov_dt_b_fed_asin_title&th=1,,,,163
+8mm Aluminium Shaft,4,,Mechanical Labs,,,,
+Bearings,,,,,,,
+683ZZ Ball Bearing 3 x 7 x 3mm (10 Pack),2,98,https://www.robotics.org.za/683ZZ,,,,196
+"KP08 Pillow Block Bearing 8mm Bore with Locking Collar (2 Pack, all 4 used)",2,75,https://www.netram.co.za/bearings/8997-kp08-pillow-block-8mm-bore-2-pack.html,,,,150
+3D Printing ,,,,,,,
+PLA-CF,R500/kg,500,,,,,
+PETG,R350/kg,350,,,,,
+End Effector,,,,,,,
+Base1,1,,,PLA-CF,,4,2
+Base2,1,,,PLA-CF,,3,1.5
+Link,6,,,PLA-CF,,1,3
+Claw,4,,,PLA-CF,,1,2
+EndPad,2,,,PLA-CF,,2,2
+ServoGear,1,,,PLA-CF,,2,1
+GearArm,2,,,PLA-CF,,1,1
+MotorHousing,1,,,PLA-CF,,4,2
+Bracket,2,,,PLA-CF,,1,1
+AS5600 Cover,1,,,PLA-CF,,3,1.5
+Wrist,1,,,PLA-CF,,60,30
+Servo end,1,,,PLA-CF,,1,0.5
+Assembled total: end effector + wrist + MG996R,,,,,,148,
+ForeArm,,,,,,,
+Link1,1,,,PLA-CF,,127,63.5
+AS5600 Cover,1,,,PLA-CF,,3,1.5
+UpperArm,,,,,,,
+Link2,1,,,PLA-CF,,145,72.5
+AS5600 Cover,1,,,PLA-CF,,3,1.5
+Turntable ,,,,,,,
+Shoulder,1,,,PLA-CF,,255,127.5
+AS5600 Cover,1,,,PLA-CF,,3,1.5
+Base Coupling,1,,,PLA-CF,,157,78.5
+Base,,,,,,,
+Electrical Housing ,1,,,PETG,60%,390,136.5
+Housing Cover 1,1,,,PETG,60%,68,23.8
+Housing Cover 2,1,,,PETG,60%,57,19.95
+COST SUMMARY,,,,,,,
+Servo motors,,,,,,,1298
+Electrical,,,,,,,1902.5
+Fasteners + shafts,,,,,,,326
+Bearings,,,,,,,346
+3D printing - PLA-CF,,,,,,,394
+3D printing - PETG,,,,,,,180.25
+3D printing total,,,,,,,574.25
+TOTAL COST,,,,,,,4446.75
+Printed mass - PLA-CF (g),,,,,,,788
+Printed mass - PETG (g),,,,,,,515
+"Not costed: servo horns (no price), lab-supplied parts (free), print supports/failed prints",,,,,,,

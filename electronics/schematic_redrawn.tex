@@ -1,0 +1,173 @@
+\documentclass[border=3mm]{standalone}
+\usepackage[siunitx, european resistors]{circuitikz}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\usetikzlibrary{shapes.symbols, positioning, calc}
+\ctikzset{bipoles/length=0.9cm, diodes/scale=0.7, monopoles/ground/width=0.35}
+\tikzset{
+  chip/.style={draw, thick, fill=yellow!12, minimum width=#1, anchor=north west, inner sep=0},
+  net/.style={draw, signal, signal to=#1, fill=white, font=\scriptsize, inner sep=1.5pt, minimum height=3.6mm},
+  sheet/.style={draw, gray!70, rounded corners=2pt},
+  sheettitle/.style={anchor=north west, font=\small\bfseries, gray!60!black},
+  pinl/.style={font=\scriptsize, anchor=west, inner sep=1pt},
+  pinr/.style={font=\scriptsize, anchor=east, inner sep=1pt},
+  ref/.style={font=\footnotesize\bfseries},
+  note/.style={font=\scriptsize, align=left, anchor=north west, gray!30!black},
+  dot/.style={circle, fill, inner sep=0, minimum size=3pt}
+}
+\def\pp{0.4}
+% \chip{name}{x}{y}{width}{left pins}{right pins}{npins}{designator}{part}
+\newcommand{\chip}[9]{%
+  \node[chip=#4cm, minimum height={(#7+1)*\pp cm}] (#1) at (#2,#3) {};
+  \node[ref, above=1pt of #1.north, align=center] {#8\ \normalfont\scriptsize #9};
+  \foreach \lab [count=\i] in {#5} {
+    \draw (#1.north west) ++(0,-\pp*\i) coordinate (#1-L\i) -- ++(-0.35,0) coordinate (#1-l\i);
+    \node[pinl] at (#1-L\i) {\lab};}
+  \foreach \lab [count=\i] in {#6} {
+    \draw (#1.north east) ++(0,-\pp*\i) coordinate (#1-R\i) -- ++(0.35,0) coordinate (#1-r\i);
+    \node[pinr] at (#1-R\i) {\lab};}
+}
+\newcommand{\netL}[2]{\draw (#1) -- ++(-0.3,0) node[net=east, anchor=east]{#2};}
+\newcommand{\netLin}[2]{\draw (#1) -- ++(-0.3,0) node[net=east, anchor=east]{#2};}
+\newcommand{\netR}[2]{\draw (#1) -- ++(0.3,0) node[net=west, anchor=west]{#2};}
+\newcommand{\netRin}[2]{\draw (#1) -- ++(0.3,0) node[net=west, anchor=west]{#2};}
+\newcommand{\gndL}[1]{\draw (#1) -- ++(-0.2,0) -- ++(0,-0.1) node[ground]{};}
+\newcommand{\gndH}[1]{\draw (#1) -- ++(-0.3,0) node[ground, rotate=-90]{};}
+\newcommand{\gndR}[1]{\draw (#1) -- ++(0.2,0) -- ++(0,-0.1) node[ground]{};}
+\newcommand{\gndHR}[1]{\draw (#1) -- ++(0.3,0) node[ground, rotate=90]{};}
+\begin{document}
+\begin{circuitikz}[line width=0.5pt, font=\scriptsize]
+
+%================ 1. POWER INPUT =================
+\draw[sheet] (0,10.2) rectangle (17.9,17);
+\node[sheettitle] at (0.1,17) {1. Supply and power input};
+\chip{J1}{1.0}{15.4}{0.8}{}{L,N,PE}{3}{J1}{230\,V AC}
+\chip{U12}{3.2}{15.4}{2.0}{AC/L,AC/N,AC/PE}{+V\textsubscript{out},$-$V\textsubscript{out}}{3}{U12}{12\,V 20\,A PSU}
+\draw (J1-r1) -- (U12-l1); \draw (J1-r2) -- (U12-l2); \draw (J1-r3) -- (U12-l3);
+\chip{J2}{6.4}{15.4}{1.7}{12V+,12V$-$}{12V+,12V$-$}{2}{J2/J7}{XT60}
+\draw (U12-r1) -- (J2-l1); \draw (U12-r2) -- (J2-l2);
+\draw (J2-r1) to[fuse, l=\scriptsize F2 15\,A] ++(1.7,0) coordinate (bus);
+\gndR{J2-r2}
+\draw (bus) -- ++(0.4,0) coordinate (c3) -- ++(1.4,0) coordinate (c2) -- ++(1.3,0) coordinate (busE);
+\draw (c3) to[eC, l_=\scriptsize\begin{tabular}{@{}l@{}}C3\\4700\,\textmu F\end{tabular}, *-] ++(0,-1.4) node[ground]{};
+\draw (c2) to[C, l=\scriptsize\begin{tabular}{@{}l@{}}C2\\100\,nF\end{tabular}, *-] ++(0,-1.4) node[ground]{};
+\chip{U6}{13.6}{16.3}{1.6}{VIN,GND}{VOUT}{2}{U6}{5\,V buck}
+\draw (busE) |- (U6-l1);
+\gndL{U6-l2}
+\draw (U6-r1) -- ++(0.2,0) |- ++(0,-1.2) coordinate (v5); \netR{v5}{+5V\_LOGIC}
+\draw (busE) -- ++(0,-2.2) coordinate (busD); \netR{busD}{+12V\_BUS}
+\node[dot] at (busE) {};
+
+%================ 2. EMERGENCY STOP =================
+\draw[sheet] (0,3.3) rectangle (17.9,10);
+\node[sheettitle] at (0.1,10) {2. Emergency stop};
+\draw[thick, fill=yellow!12] (2.4,6.0) rectangle (4.4,8.6);
+\node[ref] at (3.4,8.9) {K1 \normalfont 12\,V 40\,A relay};
+\draw (2.8,7.6) rectangle (4.0,8.2); \draw (2.8,8.2) -- (4.0,7.6);
+\draw (2.8,7.9) -- (2.4,7.9) -- ++(-0.3,0) coordinate (p85); \node[font=\tiny, above] at (2.2,7.9) {85};
+\draw (4.0,7.9) -- (4.4,7.9) -- ++(0.3,0) coordinate (p86); \node[font=\tiny, above] at (4.6,7.9) {86};
+\draw[dashed] (3.4,7.6) -- (3.4,6.95);
+\draw (2.4,6.6) -- ++(-0.3,0) coordinate (p30); \node[font=\tiny, above] at (2.2,6.6) {30};
+\draw (2.4,6.6) -- (3.0,6.6) -- (4.0,6.95); \fill (3.0,6.6) circle (1.2pt);
+\draw (4.0,7.15) -- (4.4,7.15) -- ++(0.3,0); \node[font=\tiny, above] at (4.6,7.15) {87a};
+\node at (4.85,7.15) {$\times$};
+\draw (4.0,6.4) -- (4.4,6.4) -- ++(0.3,0) coordinate (p87); \node[font=\tiny, below] at (4.6,6.4) {87};
+\draw (p85) -- ++(-0.5,0) coordinate (gnode) -- ++(0,-0.1) node[ground]{};
+\draw (p86) -- (6.4,7.9) coordinate (n86);
+\draw (gnode) |- (2.6,9.4) to[D, l=\scriptsize D1 1N4007] (6.4,9.4) -- (n86);
+\node[dot] at (n86) {}; \node[dot] at (gnode) {};
+\netLin{p30}{+12V\_BUS}
+\netR{p87}{+12V\_SERVO}
+\draw (n86) -- (7.0,7.9) to[nos, l=\scriptsize SW1.1 (NC)] ++(1.6,0) coordinate (sw1); \netRin{sw1}{+12V\_BUS}
+\draw (10.0,5.0) node[ground]{} -- (10.0,5.3) to[nos, l=\scriptsize SW1.2 (NC)] ++(1.6,0) -- ++(1.0,0) coordinate (sj);
+\draw (sj) -- ++(0.3,0) node[net=west, anchor=west]{ESTOP\_SENSE};
+\draw (sj) to[R, l_=\scriptsize R1 10\,k$\Omega$, *-] ++(0,1.7) coordinate (rt); \netRin{rt}{+3.3V\_LOGIC}
+\draw (sj) to[C, l=\scriptsize C1 100\,nF] ++(0,-1.2) node[ground]{};
+
+%================ 3. SERVO RAILS =================
+\begin{scope}[xshift=1cm]
+\draw[sheet] (17.1,10.2) rectangle (31.6,17);
+\node[sheettitle] at (17.2,17) {3. Servo rails};
+\coordinate (sv) at (20.3,13.6);
+\netLin{sv}{+12V\_SERVO}
+\foreach \y/\n/\v/\net in {16.0/1/8.0/+8V\_SHOULDER, 14.0/2/6.7/+6.7V\_ELBOW\_BASE, 12.0/3/6.5/+6.5V\_WRIST\_GRIPPER} {
+  \chip{U\n}{21.9}{\y}{1.9}{VIN+,VIN$-$}{VOUT+,VOUT$-$}{2}{U\n}{XL4016, \v\,V}
+  \draw (sv) -| ($(U\n-l1)+(-0.6,0)$) -- (U\n-l1);
+  \gndL{U\n-l2}
+  \netR{U\n-r1}{\net}
+  \gndR{U\n-r2}
+}
+\node[dot] at (20.95,13.6) {};
+
+%================ 4. SERVOS AND CURRENT SENSOR =================
+\draw[sheet] (17.1,3.3) rectangle (31.6,10);
+\node[sheettitle] at (17.2,10) {4. Servo connectors and gripper current sensor};
+\def\pp{0.32}
+\foreach \nm/\x/\y/\s/\sg/\pw in {
+   A/22.4/9.2/DS5180 shoulder/SHOULDER\_SGL/+8V\_SHOULDER,
+   B/22.4/7.45/DS3240 base/BASE\_SGL/+6.7V\_ELBOW\_BASE,
+   C/22.4/5.7/DS3240 elbow/ELBOW\_SGL/+6.7V\_ELBOW\_BASE,
+   D/28.6/9.2/DS3225 wrist/WRIST\_SGL/+6.5V\_WRIST\_GRIPPER,
+   E/28.6/7.45/MG996R gripper/GRIPPER\_SGL/MG996R\_V+} {
+  \chip{\nm}{\x}{\y}{0.9}{PWM,V+,GND}{}{3}{}{\s}
+  \netLin{\nm-l1}{\sg}
+  \netL{\nm-l2}{\pw}
+  \gndH{\nm-l3}
+}
+\def\pp{0.35}
+\chip{U4}{27.6}{5.5}{1.3}{VIN+,VIN$-$}{SDA,SCL,VCC,GND}{4}{U4}{INA219, 0x40}
+\netL{U4-l1}{+6.5V\_WRIST\_GRIPPER}
+\draw (U4-l2) -- ++(-0.3,0) node[net=east, anchor=east]{MG996R\_V+};
+\netRin{U4-r1}{I2C\_SDA}
+\netRin{U4-r2}{I2C\_SCL}
+\netRin{U4-r3}{+3.3V\_LOGIC}
+\gndR{U4-r4}
+\def\pp{0.4}
+\end{scope}
+
+%================ 5. MICROCONTROLLER =================
+\begin{scope}[yshift=-0.3cm]
+\draw[sheet] (0,-3.0) rectangle (9.2,3.4);
+\node[sheettitle] at (0.1,3.4) {5. Microcontroller};
+\chip{U5}{3.6}{2.4}{2.2}{5V,3V3,GPIO 11,GPIO 12,GPIO 13,GPIO 14,GPIO 16,GND}{GPIO 39,GPIO 40,GPIO 41,USB,GND}{8}{U5}{ESP32-S3 N16R8}
+\netLin{U5-l1}{+5V\_LOGIC}
+\netL{U5-l2}{+3.3V\_LOGIC}
+\netL{U5-l3}{BASE\_SGL}
+\netL{U5-l4}{SHOULDER\_SGL}
+\netL{U5-l5}{ELBOW\_SGL}
+\netL{U5-l6}{WRIST\_SGL}
+\netL{U5-l7}{GRIPPER\_SGL}
+\gndL{U5-l8}
+\netR{U5-r1}{I2C\_SDA}
+\netR{U5-r2}{I2C\_SCL}
+\netRin{U5-r3}{ESTOP\_SENSE}
+\draw (U5-r4) -- ++(0.3,0) node[anchor=west, font=\tiny]{to laptop};
+\gndR{U5-r5}
+
+%================ 6. ENCODERS =================
+\draw[sheet] (9.4,-3.0) rectangle (32.6,3.4);
+\node[sheettitle] at (9.5,3.4) {6. Joint encoders};
+\chip{U7}{12.4}{2.4}{1.6}{VIN,GND,SDA,SCL,RST,A0,A1,A2}{SD0,SC0,SD1,SC1,SD2,SC2,SD3,SC3}{8}{U7}{TCA9548A, 0x70}
+\netLin{U7-l1}{+3.3V\_LOGIC}
+\gndH{U7-l2}
+\netLin{U7-l3}{I2C\_SDA}
+\netLin{U7-l4}{I2C\_SCL}
+\netLin{U7-l5}{+3.3V\_LOGIC}
+\draw (U7-l6) -- ++(-0.3,0) coordinate (a0);
+\draw (U7-l7) -- ++(-0.3,0) coordinate (a1);
+\draw (U7-l8) -- ++(-0.3,0) coordinate (a2) -- ++(0,-0.15) node[ground]{};
+\draw (a0) -- (a2); \node[dot] at (a1){};
+\foreach \i/\k/\t in {1/0/SDA,2/0/SCL,3/1/SDA,4/1/SCL,5/2/SDA,6/2/SCL,7/3/SDA,8/3/SCL} {
+  \netR{U7-r\i}{CH\k\_\t}
+}
+\foreach \n/\x/\y/\nm/\ch in {8/20.0/2.4/Base/0, 9/26.4/2.4/Shoulder/1, 10/20.0/-0.2/Elbow/2, 11/26.4/-0.2/Wrist/3} {
+  \chip{U\n}{\x}{\y}{1.3}{VCC,OUT,GND}{DIR,SCL,SDA,GPO}{4}{U\n}{AS5600, \nm}
+  \netLin{U\n-l1}{+3.3V\_LOGIC}
+  \gndL{U\n-l3}
+  \gndHR{U\n-r1}
+  \netR{U\n-r2}{CH\ch\_SCL}
+  \netR{U\n-r3}{CH\ch\_SDA}
+}
+\end{scope}
+\end{circuitikz}
+\end{document}

@@ -1,0 +1,26 @@
+payload,cycle,counted,picked_and_placed,radial_mm,lateral_mm,place_error_mm,cycle_time_s,gripper_holding_A,oscillation_seen_before_drop,gui_cycle_no,gui_export
+50 g,1,yes,Y,2,-2,2.83,11.71,0.127,N,3,arm_export_20261013_215029.xlsx
+50 g,2,yes,Y,3,-2,3.61,11.8,0.129,N,4,arm_export_20261013_215029.xlsx
+50 g,3,yes,Y,2,-2,2.83,11.84,0.105,N,5,arm_export_20261013_215029.xlsx
+50 g,4,yes,Y,0,-1,1.0,12.06,0.115,N,6,arm_export_20261013_215029.xlsx
+50 g,5,yes,Y,3,0,3.0,11.85,0.118,N,7,arm_export_20261013_215029.xlsx
+50 g,6,yes,Y,4,-3,5.0,11.83,0.127,Y,8,arm_export_20261013_215029.xlsx
+50 g,7,yes,Y,4,-2,4.47,12.41,0.122,Y,10,arm_export_20261013_215029.xlsx
+50 g,8,yes,Y,2,-1,2.24,11.95,0.125,N,11,arm_export_20261013_215029.xlsx
+50 g,9,yes,Y,0,-1,1.0,12.25,0.119,N,12,arm_export_20261013_215029.xlsx
+50 g,10,yes,Y,2,-1,2.24,12.49,0.103,N,13,arm_export_20261013_215029.xlsx
+500 g,1,yes,Y,-4,4,5.66,12.42,0.131,Y,1,arm_export_20261013_221739.xlsx
+500 g,2,yes,Y,0,2,2.0,11.97,0.157,N,3,arm_export_20261013_221739.xlsx
+500 g,3,yes,Y,0,8,8.0,11.88,0.139,Y,4,arm_export_20261013_221739.xlsx
+500 g,4,yes,Y,1,2,2.24,12.44,0.145,N,5,arm_export_20261013_221739.xlsx
+500 g,5,yes,Y,0,4,4.0,11.89,0.136,N,6,arm_export_20261013_221739.xlsx
+500 g,6,yes,Y,3,3,4.24,12.22,0.141,Y,7,arm_export_20261013_221739.xlsx
+500 g,7,yes,Y,4,4,5.66,12.1,0.138,Y,8,arm_export_20261013_221739.xlsx
+500 g,8,yes,Y,-2,2,2.83,12.3,0.317,Y,9,arm_export_20261013_221739.xlsx
+500 g,9,yes,Y,-1,1,1.41,11.9,0.129,Y,11,arm_export_20261013_221739.xlsx
+500 g,10,yes,Y,2,2,2.83,12.22,0.132,Y,12,arm_export_20261013_221739.xlsx
+500 g,11,extra,Y,0,2,2.0,12.28,0.132,N,13,arm_export_20261013_221739.xlsx
+500 g,12,extra,Y,0,3,3.0,12.41,0.134,Y,14,arm_export_20261013_221739.xlsx
+500 g,13,extra,Y,2,3,3.61,11.88,0.134,N,15,arm_export_20261013_221739.xlsx
+500 g,14,extra,Y,-3,4,5.0,12.03,0.239,N,16,arm_export_20261013_221739.xlsx
+500 g,15,extra,Y,0,3,3.0,12.03,0.139,Y,17,arm_export_20261013_221739.xlsx
