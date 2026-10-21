@@ -1,0 +1,32 @@
+(kicad_sch
+	(version 20260306)
+	(generator "eeschema")
+	(generator_version "10.0")
+	(uuid "c6d21d5d-891a-43fc-96fa-6c97ddf2d7d5")
+	(paper "A4")
+	(lib_symbols)
+	(global_label "+6.8V_WRIST_GRIPPER"
+		(shape input)
+		(at 23.7519 1.3498 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "7d3dbcf0-51b4-426b-9cba-4ba3d064157c")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at -0.4604 1.3498 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+	)
+)

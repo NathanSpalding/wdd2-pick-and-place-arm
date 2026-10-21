@@ -1,0 +1,121 @@
+{
+  "version": 2,
+  "units": "mm",
+  "saved": "2026-10-13T21:40:00",
+  "description": "Test 8.7: cube from the right station (+45 deg on the mat, T9) to the left station (-45 deg), r = 300 mm. Approach points raised to 100 mm (clears the 40 mm cube) and 1.5 s waits above each station so the base settles before descending.",
+  "gripper_mode": "auto",
+  "cube_mm": [
+    212.1,
+    -212.1
+  ],
+  "presets_mm": {
+    "Right station": [
+      212.1,
+      -212.1,
+      25.0
+    ],
+    "Above right": [
+      212.1,
+      -212.1,
+      100.0
+    ],
+    "Left station": [
+      212.1,
+      212.1,
+      25.0
+    ],
+    "Above left": [
+      212.1,
+      212.1,
+      100.0
+    ]
+  },
+  "steps": [
+    {
+      "kind": "move",
+      "name": "Home",
+      "pos_mm": [
+        255.0,
+        7.0,
+        97.0
+      ]
+    },
+    {
+      "kind": "move",
+      "name": "Above right",
+      "pos_mm": [
+        212.1,
+        -212.1,
+        100.0
+      ]
+    },
+    {
+      "kind": "wait",
+      "secs": 1.5
+    },
+    {
+      "kind": "move",
+      "name": "Right station",
+      "pos_mm": [
+        212.1,
+        -212.1,
+        25.0
+      ]
+    },
+    {
+      "kind": "grab"
+    },
+    {
+      "kind": "move",
+      "name": "Above right",
+      "pos_mm": [
+        212.1,
+        -212.1,
+        100.0
+      ]
+    },
+    {
+      "kind": "move",
+      "name": "Above left",
+      "pos_mm": [
+        212.1,
+        212.1,
+        100.0
+      ]
+    },
+    {
+      "kind": "wait",
+      "secs": 1.5
+    },
+    {
+      "kind": "move",
+      "name": "Left station",
+      "pos_mm": [
+        212.1,
+        212.1,
+        25.0
+      ]
+    },
+    {
+      "kind": "release"
+    },
+    {
+      "kind": "move",
+      "name": "Above left",
+      "pos_mm": [
+        212.1,
+        212.1,
+        100.0
+      ]
+    },
+    {
+      "kind": "move",
+      "name": "Home",
+      "pos_mm": [
+        255.0,
+        7.0,
+        97.0
+      ]
+    }
+  ]
+}

@@ -1,0 +1,192 @@
+<?xml version="1.0" ?>
+<!--
+  WDD2 pick-and-place arm - plain URDF (converted from the fusion2urdf .xacro)
+
+  Changes from the exported file:
+  - Plain URDF (no xacro includes), so Pinocchio and the viewer can load it directly
+  - Joints renamed: Revolute 1-4 -> base, shoulder, elbow, wrist
+  - Shoulder axis flipped (-X -> +X) and its limits swapped/negated, so that for
+    shoulder, elbow and wrist a POSITIVE angle lifts the arm (same convention)
+  - Effort and velocity limits set from the servo datasheets (were 100/100 placeholders)
+  - A fixed "world" link added: rotates the model +90 deg about X, because Fusion's
+    "up" is Y while URDF expects Z up. The Z offset (WORLD_Z) still needs setting so
+    the bottom of the base sits on the floor.
+  - Mesh paths made relative (../meshes/...) instead of package:// (ROS only)
+
+  Place this file in:  WDD2_URDF_Export_description/urdf/
+  Meshes expected in:  WDD2_URDF_Export_description/meshes/
+-->
+<robot name="WDD2_arm">
+
+<material name="silver">
+  <color rgba="0.700 0.700 0.700 1.000"/>
+</material>
+
+<link name="world"/>
+
+<joint name="world_to_base" type="fixed">
+  <!-- rpy: Fusion Y-up -> URDF Z-up (roll 90 deg), then turned -90 deg (yaw) so the
+       arm points along +X at zero angles. xyz: puts the base rotation axis at the origin.
+       The last value (0.0) is WORLD_Z: raise it until the base sits on the floor. -->
+  <origin xyz="0.475 0.029124 0.0641" rpy="1.5708 0 -1.5708"/>
+  <parent link="world"/>
+  <child link="base_link"/>
+</joint>
+
+<link name="base_link">
+  <inertial>
+    <origin xyz="0.029133051866286376 0.00940720014332494 0.5944684988914619" rpy="0 0 0"/>
+    <mass value="2.542636799630123"/>
+    <inertia ixx="0.017445" iyy="0.022461" izz="0.018074" ixy="-2e-06" iyz="0.000126" ixz="1e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="../meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="../meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="turntable_link">
+  <inertial>
+    <origin xyz="0.010354867246820752 0.03485333860242344 -0.041211933673383605" rpy="0 0 0"/>
+    <mass value="0.4569441635396091"/>
+    <inertia ixx="0.000468" iyy="0.000512" izz="0.000437" ixy="5e-06" iyz="-5e-06" ixz="7.9e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.029124 0.028703 -0.475" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="../meshes/turntable_link_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.029124 0.028703 -0.475" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="../meshes/turntable_link_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="upper_arm_link">
+  <inertial>
+    <origin xyz="0.018912413132144385 0.0014197425789116286 -0.1204929417639426" rpy="0 0 0"/>
+    <mass value="0.22910498645177246"/>
+    <inertia ixx="0.000777" iyy="0.00086" izz="0.000108" ixy="-0.0" iyz="0.0" ixz="6.5e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.016399 -0.024497 -0.416755" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="../meshes/upper_arm_link_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.016399 -0.024497 -0.416755" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="../meshes/upper_arm_link_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="forearm_link">
+  <inertial>
+    <origin xyz="0.01851922020392568 0.0014250667393331667 -0.10555347876998847" rpy="0 0 0"/>
+    <mass value="0.20968014247381014"/>
+    <inertia ixx="0.000416" iyy="0.000501" izz="0.000105" ixy="-0.0" iyz="0.0" ixz="4.2e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.01925 -0.024531 -0.241755" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="../meshes/forearm_link_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.01925 -0.024531 -0.241755" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="../meshes/forearm_link_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="gripper_link">
+  <inertial>
+    <origin xyz="0.008338893538457206 0.007155203003616339 -0.06374679829400297" rpy="0 0 0"/>
+    <mass value="0.18542696815557067"/>
+    <inertia ixx="0.000321" iyy="0.000358" izz="9.4e-05" ixy="4e-06" iyz="-1e-05" ixz="3e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.022 -0.024565 -0.096756" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="../meshes/gripper_link_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.022 -0.024565 -0.096756" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="../meshes/gripper_link_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<!-- Base: DS3240-270-FB, 40 kg.cm (about 3.9 Nm), 0.12 s/60 deg (about 8.7 rad/s)
+     Limits set to +/-68 deg (were +/-70): measured hard stops at -83.6 / +72.9 deg
+     (AS5600 calibration, Oct 2026), so +68 sits about 5 deg inside the right stop. -->
+<joint name="base" type="revolute">
+  <origin xyz="0.029124 -0.028703 0.475" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="turntable_link"/>
+  <axis xyz="0.0 -1.0 0.0"/>
+  <limit lower="-1.186824" upper="1.186824" effort="3.9" velocity="8.7"/>
+</joint>
+
+<!-- Shoulder: DS5180 at 8.0 V, about 100 kg.cm (about 9.8 Nm), about 0.2 s/60 deg (about 5.2 rad/s)
+     Axis flipped to +X (was -X): limits were [-75, +30] deg, now [-30, +75] deg, positive = up -->
+<joint name="shoulder" type="revolute">
+  <origin xyz="-0.012725 0.0532 -0.058245" rpy="0 0 0"/>
+  <parent link="turntable_link"/>
+  <child link="upper_arm_link"/>
+  <axis xyz="1.0 0.0 0.0"/>
+  <limit lower="-0.523599" upper="1.308997" effort="9.8" velocity="5.2"/>
+</joint>
+
+<!-- Elbow: DS3240, 45 kg.cm at 6.8 V (about 4.4 Nm), 0.17 s/60 deg (about 6.2 rad/s) -->
+<joint name="elbow" type="revolute">
+  <origin xyz="0.002851 3.4e-05 -0.175" rpy="0 0 0"/>
+  <parent link="upper_arm_link"/>
+  <child link="forearm_link"/>
+  <axis xyz="1.0 0.0 0.0"/>
+  <limit lower="-1.570796" upper="1.570796" effort="4.4" velocity="6.2"/>
+</joint>
+
+<!-- Wrist: DS3225, 25 kg.cm at 6.8 V (about 2.45 Nm), 0.13 s/60 deg (about 8.0 rad/s)
+     Upper limit lowered from +115 deg to +97 deg: the measured hard stop is at +102 deg
+     (AS5600 calibration, Oct 2026), so the limit sits 5 deg inside it. -->
+<joint name="wrist" type="revolute">
+  <origin xyz="0.00275 3.4e-05 -0.144999" rpy="0 0 0"/>
+  <parent link="forearm_link"/>
+  <child link="gripper_link"/>
+  <axis xyz="1.0 0.0 0.0"/>
+  <limit lower="-1.48353" upper="1.692969" effort="2.45" velocity="8.0"/>
+</joint>
+
+<!-- Tool centre point (TCP): the gripping point, 133 mm beyond the wrist joint
+     along the gripper (the arm points along -Z in the link frames). No mesh, no mass. -->
+<link name="tcp"/>
+
+<joint name="wrist_to_tcp" type="fixed">
+  <origin xyz="0 0 -0.133" rpy="0 0 0"/>
+  <parent link="gripper_link"/>
+  <child link="tcp"/>
+</joint>
+
+</robot>

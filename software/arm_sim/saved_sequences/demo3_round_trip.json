@@ -1,0 +1,168 @@
+{
+  "version": 2,
+  "units": "mm",
+  "saved": "2026-09-30T20:15:00",
+  "description": "Round trip: cube taken from the front to the right side, left for 1 s, then returned to the exact start point. Run several trials to test repeatability.",
+  "gripper_mode": "auto",
+  "cube_mm": [
+    300.0,
+    0.0
+  ],
+  "presets_mm": {
+    "Front": [
+      300.0,
+      0.0,
+      25.0
+    ],
+    "Above front": [
+      300.0,
+      0.0,
+      70.0
+    ],
+    "Right side": [
+      192.8,
+      -229.8,
+      25.0
+    ],
+    "Above right side": [
+      192.8,
+      -229.8,
+      70.0
+    ]
+  },
+  "steps": [
+    {
+      "kind": "move",
+      "name": "Home",
+      "pos_mm": [
+        255.0,
+        7.0,
+        97.0
+      ]
+    },
+    {
+      "kind": "move",
+      "name": "Above front",
+      "pos_mm": [
+        300.0,
+        0.0,
+        70.0
+      ]
+    },
+    {
+      "kind": "move",
+      "name": "Front",
+      "pos_mm": [
+        300.0,
+        0.0,
+        25.0
+      ]
+    },
+    {
+      "kind": "grab"
+    },
+    {
+      "kind": "move",
+      "name": "Above front",
+      "pos_mm": [
+        300.0,
+        0.0,
+        70.0
+      ]
+    },
+    {
+      "kind": "move",
+      "name": "Above right side",
+      "pos_mm": [
+        192.8,
+        -229.8,
+        70.0
+      ]
+    },
+    {
+      "kind": "move",
+      "name": "Right side",
+      "pos_mm": [
+        192.8,
+        -229.8,
+        25.0
+      ]
+    },
+    {
+      "kind": "release"
+    },
+    {
+      "kind": "move",
+      "name": "Above right side",
+      "pos_mm": [
+        192.8,
+        -229.8,
+        70.0
+      ]
+    },
+    {
+      "kind": "wait",
+      "secs": 1.0
+    },
+    {
+      "kind": "move",
+      "name": "Right side",
+      "pos_mm": [
+        192.8,
+        -229.8,
+        25.0
+      ]
+    },
+    {
+      "kind": "grab"
+    },
+    {
+      "kind": "move",
+      "name": "Above right side",
+      "pos_mm": [
+        192.8,
+        -229.8,
+        70.0
+      ]
+    },
+    {
+      "kind": "move",
+      "name": "Above front",
+      "pos_mm": [
+        300.0,
+        0.0,
+        70.0
+      ]
+    },
+    {
+      "kind": "move",
+      "name": "Front",
+      "pos_mm": [
+        300.0,
+        0.0,
+        25.0
+      ]
+    },
+    {
+      "kind": "release"
+    },
+    {
+      "kind": "move",
+      "name": "Above front",
+      "pos_mm": [
+        300.0,
+        0.0,
+        70.0
+      ]
+    },
+    {
+      "kind": "move",
+      "name": "Home",
+      "pos_mm": [
+        255.0,
+        7.0,
+        97.0
+      ]
+    }
+  ]
+}

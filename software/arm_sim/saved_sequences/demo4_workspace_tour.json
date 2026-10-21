@@ -1,0 +1,164 @@
+{
+  "version": 2,
+  "units": "mm",
+  "saved": "2026-09-30T20:40:00",
+  "description": "Workspace tour (no cube). Part 1: gripper pointing down (about 280-360 mm from the base axis). Part 2: beyond ~360 mm the Auto gripper angle tilts the gripper toward level, extending the reach to about 500 mm. Use gripper angle mode 'Auto (by reach)'.",
+  "gripper_mode": "auto",
+  "presets_mm": {
+    "Down far low": [
+      350.0,
+      0.0,
+      25.0
+    ],
+    "Down near high": [
+      260.0,
+      0.0,
+      100.0
+    ],
+    "Down left low": [
+      172.1,
+      245.7,
+      25.0
+    ],
+    "Down right low": [
+      172.1,
+      -245.7,
+      25.0
+    ],
+    "Tilted front": [
+      420.0,
+      0.0,
+      70.0
+    ],
+    "Level front": [
+      505.0,
+      0.0,
+      150.0
+    ],
+    "Level high": [
+      460.0,
+      0.0,
+      250.0
+    ],
+    "Level left": [
+      350.0,
+      350.0,
+      150.0
+    ],
+    "Level right": [
+      350.0,
+      -350.0,
+      150.0
+    ]
+  },
+  "steps": [
+    {
+      "kind": "move",
+      "name": "Home",
+      "pos_mm": [
+        255.0,
+        7.0,
+        97.0
+      ]
+    },
+    {
+      "kind": "move",
+      "name": "Down far low",
+      "pos_mm": [
+        350.0,
+        0.0,
+        25.0
+      ]
+    },
+    {
+      "kind": "move",
+      "name": "Down near high",
+      "pos_mm": [
+        260.0,
+        0.0,
+        100.0
+      ]
+    },
+    {
+      "kind": "move",
+      "name": "Down left low",
+      "pos_mm": [
+        172.1,
+        245.7,
+        25.0
+      ]
+    },
+    {
+      "kind": "move",
+      "name": "Down right low",
+      "pos_mm": [
+        172.1,
+        -245.7,
+        25.0
+      ]
+    },
+    {
+      "kind": "move",
+      "name": "Tilted front",
+      "pos_mm": [
+        420.0,
+        0.0,
+        70.0
+      ]
+    },
+    {
+      "kind": "move",
+      "name": "Level front",
+      "pos_mm": [
+        505.0,
+        0.0,
+        150.0
+      ]
+    },
+    {
+      "kind": "move",
+      "name": "Level high",
+      "pos_mm": [
+        460.0,
+        0.0,
+        250.0
+      ]
+    },
+    {
+      "kind": "move",
+      "name": "Level left",
+      "pos_mm": [
+        350.0,
+        350.0,
+        150.0
+      ]
+    },
+    {
+      "kind": "move",
+      "name": "Level right",
+      "pos_mm": [
+        350.0,
+        -350.0,
+        150.0
+      ]
+    },
+    {
+      "kind": "move",
+      "name": "Tilted front",
+      "pos_mm": [
+        420.0,
+        0.0,
+        70.0
+      ]
+    },
+    {
+      "kind": "move",
+      "name": "Home",
+      "pos_mm": [
+        255.0,
+        7.0,
+        97.0
+      ]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+as5600 Cover - 3
+Base1 - 1
+Base2 - 1
+Claw - 4
+link - 6
+EndPad - 2
+Link1 - 1
+link2- 1
+MotorHousing - 1
+Part 5 - 1
+part 5-1 - 1
+part 7 - 2
+part 8 - 1
+pin - 3
+wrist - 1
